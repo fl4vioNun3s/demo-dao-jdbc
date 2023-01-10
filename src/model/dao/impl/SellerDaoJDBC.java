@@ -156,6 +156,7 @@ public class SellerDaoJDBC implements SellerDao {
 		return dep;
 	}
 	
+	//Método auxiliar que instancia um vendedor.
 	public Seller instantiateSeller(ResultSet rs, Department dep) throws SQLException {
 		Seller obj = new Seller();
 		obj.setId(rs.getInt("Id"));
@@ -167,8 +168,6 @@ public class SellerDaoJDBC implements SellerDao {
 		return obj;
 	}
 	
-	
-	//Método auxiliar que instancia um vendedor.
 
 	@Override
 	public List<Seller> findAll() {
