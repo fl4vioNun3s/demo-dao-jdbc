@@ -2,6 +2,7 @@ package model.dao;
 
 import java.util.List;
 
+import model.entities.Department;
 import model.entities.Seller;
 
 //Interface das operações dos vendedores.
@@ -20,4 +21,7 @@ public interface SellerDao {
 
 	// Lista todos os vendedores.
 	List<Seller> findAll();
+	
+	//Lista que encontra os vendedores pelo departamento.
+	List<Seller> findByDepartment(Department department);
 }
