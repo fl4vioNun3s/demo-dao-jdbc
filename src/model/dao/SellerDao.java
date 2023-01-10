@@ -4,6 +4,7 @@ import java.util.List;
 
 import model.entities.Seller;
 
+//Interface das operações dos vendedores.
 public interface SellerDao {
 	// Insere no banco de dados um vendedor.
 	void insert(Seller seller);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import model.entities.Department;
 
+//Interface das operações dos departamentos.
 public interface DepartmentDao {
 	
 	//Insere no banco de dados um departamento.
