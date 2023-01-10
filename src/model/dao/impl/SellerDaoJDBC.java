@@ -59,18 +59,10 @@ public class SellerDaoJDBC implements SellerDao {
 			if (rs.next()) {
 				
 				//Cria o objeto Departament.
-				Department dep = new Department();
-				dep.setId(rs.getInt("DepartmentId"));
-				dep.setName(rs.getString("DepName"));
+				Department dep = instantiateDepartment(rs);
 
 				//Cria o objeto Seller.
-				Seller obj = new Seller();
-				obj.setId(rs.getInt("Id"));
-				obj.setName(rs.getString("Name"));
-				obj.setEmail(rs.getString("Email"));
-				obj.setBaseSalary(rs.getDouble("BaseSalary"));
-				obj.setBirthDate(rs.getDate("BirthDate").toLocalDate());
-				obj.setDepartment(dep);
+				Seller obj = instantiateSeller(rs,dep);
 
 				return obj;
 			}
@@ -83,6 +75,28 @@ public class SellerDaoJDBC implements SellerDao {
 			DB.closeResultSet(rs);
 		}
 	} 
+	
+	//Método auxiliar que instancia um departamento.
+	public Department instantiateDepartment(ResultSet rs) throws SQLException{
+		Department dep = new Department();
+		dep.setId(rs.getInt("DepartmentId"));
+		dep.setName(rs.getString("DepName"));
+		return dep;
+	}
+	
+	public Seller instantiateSeller(ResultSet rs, Department dep) throws SQLException {
+		Seller obj = new Seller();
+		obj.setId(rs.getInt("Id"));
+		obj.setName(rs.getString("Name"));
+		obj.setEmail(rs.getString("Email"));
+		obj.setBaseSalary(rs.getDouble("BaseSalary"));
+		obj.setBirthDate(rs.getDate("BirthDate").toLocalDate());
+		obj.setDepartment(dep);
+		return obj;
+	}
+	
+	
+	//Método auxiliar que instancia um vendedor.
 
 	@Override
 	public List<Seller> findAll() {
